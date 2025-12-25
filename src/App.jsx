@@ -1,33 +1,38 @@
 import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
 import AgriAuth from "./components/AgriAuth";
+import ConnectWithUs from "./pages/ConnectWithUs";
+import SurplusTracking from "./pages/SurplusTracking";
+import WasteRouting from "./pages/WasteRouting";
+import WarehouseRouting from "./pages/WarehouseRouting";
+
 
 export default function App() {
   const [showLogin, setShowLogin] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // LOGIN SCREEN
   if (!isAuthenticated && showLogin) {
     return (
       <AgriAuth
         onSuccess={() => setIsAuthenticated(true)}
-        onBack={() => setShowLogin(false)} // ✅ BACK BUTTON HANDLER
+        onBack={() => setShowLogin(false)}
       />
     );
   }
 
-  // LANDING PAGE
-  if (!isAuthenticated) {
-    return <Landing onGetStarted={() => setShowLogin(true)} />;
-  }
-
-  // DASHBOARD (AFTER LOGIN)
   return (
-    <div style={{ padding: "40px" }}>
-      <h1>🌍 CircularFood Dashboard</h1>
-      <p>You are now logged in.</p>
-      <button onClick={() => setIsAuthenticated(false)}>Log out</button>
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        element={<Landing onGetStarted={() => setShowLogin(true)} />}
+      />
+      <Route path="/connect" element={<ConnectWithUs />} />
+      <Route path="/surplus-tracking" element={<SurplusTracking />} />
+      <Route path="/waste-routing" element={<WasteRouting />} />
+      <Route path="/warehouse-routing" element={<WarehouseRouting />} />
+
+    </Routes>
   );
 }
 

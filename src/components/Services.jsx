@@ -1,30 +1,39 @@
+import { useNavigate } from "react-router-dom";
 export default function Services() {
+  const navigate = useNavigate();
   return (
     <section className="services">
       <div className="card">
-        <h3>Surplus Tracking</h3>
+        <h3>Demand Oversupply Alert System and Market Stress Detection</h3>
         <p>
-          demand oversupply alert system and market system detection
+          Real-time detection of demand–supply imbalances using intelligent alerts and market signal analysis, enabling faster redistribution decisions and reduced waste.
         </p>
-        <button>Read More</button>
+        <button onClick={() => navigate("/surplus-tracking")}>
+          Read More
+        </button>
+
       </div>
 
       <div className="card">
         <h3>Waste Monetization Routing</h3>
         <p>
-          Redirect surplus into animal feed, bio-energy, or nutrition streams
-          instead of landfill disposal.
+          Automatically redirect surplus food into the most valuable reuse pathways—such as animal feed, bio-energy, or nutrition—based on quality, location, and market demand.
         </p>
-        <button>Read More</button>
+        <button onClick={() => navigate("/waste-routing")}>
+          Read More
+        </button>
+
       </div>
 
       <div className="card">
-        <h3>Impact Analytics</h3>
+        <h3>Warehouse Routing</h3>
         <p>
-          Measure emissions prevented, total SKUs processed, and sustainability
-          impact in real time.
+          Optimize surplus movement through intelligent warehouse allocation and routing, ensuring faster handling, reduced storage costs, and minimal spoilage.
         </p>
-        <button>Read More</button>
+        <button onClick={() => navigate("/warehouse-routing")}>
+          Read More
+        </button>
+
       </div>
     </section>
   );
